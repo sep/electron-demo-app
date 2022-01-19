@@ -1,0 +1,23 @@
+{
+  "name": "electron-demo-app",
+  "version": "1.0.0",
+  "description": "A sample demo app for learning Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sep/electron-demo-app.git"
+  },
+  "author": "SEP",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sep/electron-demo-app/issues"
+  },
+  "homepage": "https://github.com/sep/electron-demo-app#readme",
+  "devDependencies": {
+    "electron": "^16.0.7"
+  }
+}
