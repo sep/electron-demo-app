@@ -4,7 +4,8 @@
   "description": "A sample demo app for learning Electron",
   "main": "main.js",
   "scripts": {
-    "compile": "tsc",
+    "webpack": "webpack --config webpack.config.js",
+    "compile": "tsc && npm run webpack",
     "lint": "eslint . --ext .ts,.tsx",
     "start": "npm run compile && electron-forge start",
     "test": "jest",
@@ -25,6 +26,9 @@
   },
   "homepage": "https://github.com/sep/electron-demo-app#readme",
   "devDependencies": {
+    "@babel/core": "^7.16.10",
+    "@babel/preset-env": "^7.16.10",
+    "@babel/preset-typescript": "^7.16.7",
     "@electron-forge/cli": "^6.0.0-beta.63",
     "@electron-forge/maker-deb": "^6.0.0-beta.63",
     "@electron-forge/maker-rpm": "^6.0.0-beta.63",
@@ -34,10 +38,16 @@
     "@types/jquery": "^3.5.13",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
+    "babel-loader": "^8.2.3",
     "electron": "^16.0.7",
     "eslint": "^8.7.0",
+    "fork-ts-checker-webpack-plugin": "^6.5.0",
     "jest": "^27.4.7",
-    "typescript": "^4.5.4"
+    "path": "^0.12.7",
+    "terser-webpack-plugin": "^5.3.0",
+    "typescript": "^4.5.4",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",

@@ -1,32 +1,32 @@
-// window.$ = window.jQuery = require('jquery.js');
-// window.$ = window.jQuery = require('jquery');
-
 $(() => {
-
+  console.log("hello")
   let firstOperand: number;
   let secondOperand: number;
 
-  $('.first-operand').on('input propertychange', function() {
-    firstOperand = parseFloat($('.first-operand').val() as string);
+  $('#first-operand').on('input', function() {
+    console.log(1);
+    firstOperand = parseFloat($('#first-operand').val() as string);
   })
 
-  $('.second-operand').on('input propertychange', function() {
-    secondOperand = parseFloat($('.second-operand').val() as string)
+  $('#second-operand').on('input', function() {
+    console.log(2);
+    secondOperand = parseFloat($('#second-operand').val() as string)
   })
 
-  $('.sum').on('button onclick', function() {
-    $('.result').text(firstOperand + secondOperand)
+  $('#sum').on('click', function() {
+    console.log("world")
+    $('#result').text(firstOperand + secondOperand)
   })
 
-  $('.difference').on('button onclick', function() {
-    $('.result').text(firstOperand - secondOperand)
+  $('#difference').on('click', function() {
+    $('#result').text(firstOperand - secondOperand)
   })
 
-  $('.product').on('button onclick', function() {
-    $('.result').text(firstOperand * secondOperand)
+  $('#product').on('click', function() {
+    $('#result').text(firstOperand * secondOperand)
   })
 
-  $('.division').on('button onclick', function() {
-    $('.result').text(firstOperand / secondOperand)
+  $('#division').on('click', function() {
+    $('#result').text(firstOperand / secondOperand)
   })
 })
