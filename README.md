@@ -1,6 +1,6 @@
 # electron-demo-app
 
-![Workflow status](https://github.com/sep/electron-demo-app/actions/workflows/node.js.yml/badge.svg)
+[![Workflow status](https://github.com/sep/electron-demo-app/actions/workflows/node.js.yml/badge.svg)](https://github.com/sep/electron-demo-app/actions/workflows/node.js.yml)
 
 This is a demonstration of an Electron desktop app with basic CI/CD and cross-platform functionality.
 
