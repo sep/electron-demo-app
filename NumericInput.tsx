@@ -1,12 +1,13 @@
 import React from 'react';
 
 export interface NumericInputType {
+  id: string
   getter: number;
   setter: (e:number)=>void;
 }
 
-export function NumericInput({ getter, setter }: NumericInputType) {
+export function NumericInput({ id, getter, setter }: NumericInputType) {
   return (
-    <input type="number" value={getter} onChange={e => setter(parseFloat(e.target.value))} />
+    <input id={id} type="number" value={getter} onChange={e => setter(parseFloat(e.target.value))} />
   );
 }

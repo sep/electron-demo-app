@@ -11,8 +11,8 @@ export default function Calculator() {
   return (
     <div className="calculator">
       <div className="inputs">
-        <NumericInput getter={firstOperand} setter={setFirstOperand} />
-        <NumericInput getter={secondOperand} setter={setSecondOperand} />
+        <NumericInput id="firstOperand" getter={firstOperand} setter={setFirstOperand} />
+        <NumericInput id="secondOperand"  getter={secondOperand} setter={setSecondOperand} />
         <MathButton firstOperand={firstOperand} secondOperand={secondOperand} operation={sum} setResult={setResult} label="+" />
         <MathButton firstOperand={firstOperand} secondOperand={secondOperand} operation={difference} setResult={setResult} label="-" />
         <MathButton firstOperand={firstOperand} secondOperand={secondOperand} operation={product} setResult={setResult} label="*" />
