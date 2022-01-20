@@ -22,12 +22,17 @@ afterAll (() => {
 
 
 test('vacuous', () => {
-  driver.get('https://www.google.com')
-  driver.findElement(webdriver.By.name('q')).sendKeys('webdriver')
-  driver.findElement(webdriver.By.name('btnG')).click()
+  const firstOperand = driver.findElement(webdriver.By.id('firstOperand'))
+  const secondOperand = driver.findElement(webdriver.By.id('secondOperand'))
+  const sumButton = driver.findElement(webdriver.By.id('sum'))
+  const output = driver.findElement(webdriver.By.id('result'))
+
+  firstOperand.sendKeys('100');
+  secondOperand.sendKeys('50')
+  sumButton.click()
   return driver.wait(() => {
-    return driver.getTitle().then((title) => {
-      return title.trim() === 'Hello World!'
+    return output.getText().then((resultText) => {
+      return resultText === "The result is 150"
     })
-  }, 1000)
+  })
 });
