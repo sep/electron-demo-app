@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom'
-import Game from './Game'
+import Calculator from './Calculator'
 
 render(
-  <Game />,
+  <Calculator />,
   document.getElementById('root')
 );
