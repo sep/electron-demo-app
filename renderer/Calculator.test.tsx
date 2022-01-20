@@ -2,7 +2,6 @@ import React from 'react';
 import Calculator from "./Calculator";
 import { NumericInput } from './NumericInput';
 import TestRenderer, { act } from 'react-test-renderer';
-import { MathButton } from './MathButton';
 
 
 describe("Calculator app", () => {

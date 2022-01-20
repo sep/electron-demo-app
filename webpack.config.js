@@ -3,7 +3,7 @@ const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = () => {
-    const entry = './index.tsx';
+    const entry = './renderer/index.tsx';
 
     const output = {
         filename: 'site.js',
