@@ -4,25 +4,10 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <!-- <script>window.$ = window.jQuery = require('jquery');</script> -->
-    <!-- <script type="text/javascript" src="js/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script> -->
-    <script src="calculator.js"></script>
 </head>
 <body>
     <h1>Hello World!</h1>
-    <p>
-        We are using Node.js <span id="node-version"></span>,
-        Chromium <span id="chrome-version"></span>,
-        and Electron <span id="electron-version"></span>.
-    </p>
-    <div>
-        <input type="number" id="first-operand" name="first operand">
-        <input type="number" id="second-operand" name="second operand">
-        <button type="button" id="sum">+</button>
-        <button type="button" id="difference">-</button>
-        <button type="button" id="product">x</button>
-        <button type="button" id="division">/</button>
-        <span id="result"></span>
-    </div>
+    <div id="root"></div>
+    <script src="site.js"></script>
 </body>
 </html>
