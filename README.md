@@ -4,10 +4,32 @@
 
 This is a demonstration of an Electron desktop app with basic CI/CD and cross-platform functionality.
 
-Our goal with this app is to learn how to:
+Our goals with this app are to learn how to:
 
 * structure a basic Electron app
 * use TypeScript
 * build installers for Linux, Mac, and Windows
 * automated testing
 * use the CI/CD functionality (workflows) of GitHub with an Electron app
+
+# Usage
+
+You'll need [Node.js](https://nodejs.org/) installed on your computer in order to build this app.
+
+```
+$ git clone https://github.com/sep/electron-demo-app
+$ cd electron-demo-app
+$ npm install
+$ npm start
+```
+
+# Other commands
+
+* **compile** - transpile TypeScript into JavaScript
+* **lint** - run ESLint
+* **test** - run automated tests
+* **package** - bundle the Electron app to get it ready for distribution
+* **make-all** - make installers for all platforms
+* **make-linux** - make installer for only Linux
+* **make-mac** - make installers for only MacOS
+* **make-windows** - make installers for only Windows
