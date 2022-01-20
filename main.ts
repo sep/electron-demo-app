@@ -1,6 +1,5 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
-import fs from "fs";
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -28,8 +27,11 @@ async function createWindow() {
 
 app.on("ready", createWindow);
 
-ipcMain.on("toMain", (event, args) => {
+ipcMain.on("sum", (event, firstOperand, secondOperand) => {
+  console.log(`received sum: ${firstOperand}, ${secondOperand}`)
+  var first = parseInt(firstOperand)
+  var second = parseInt(secondOperand)
+  var sum = first + second
   // Send result back to renderer process
-  win.webContents.send("fromMain", "this is what I'm sending to the renderer");
-  //fs.readFile("path/to/file", (error, data) => {/*do something*/});
+  win.webContents.send("newResult", sum);
 });

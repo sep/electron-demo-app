@@ -4,18 +4,18 @@ import { contextBridge, ipcRenderer } from "electron";
 // the ipcRenderer without exposing the entire object
 contextBridge.exposeInMainWorld(
   "api", {
-      send: (channel: string, data: any) => {
+      send: (channel: string, result: any) => {
           // whitelist channels
-          const validChannels = ["toMain"];
+          const validChannels = ["sum"];
           if (validChannels.includes(channel)) {
-              ipcRenderer.send(channel, data);
+              ipcRenderer.send(channel, result);
           }
       },
-      receive: (channel: string, func: (...args: any) => void) => {
+      receive: (channel: string, func: (firstOperand: any, secondOperand: any) => void) => {
           const validChannels = ["fromMain"];
           if (validChannels.includes(channel)) {
               // Deliberately strip event as it includes `sender` 
-              ipcRenderer.on(channel, (event, ...args) => func(...args));
+              ipcRenderer.on(channel, (event, firstOperand, secondOperand) => func(firstOperand, secondOperand));
           }
       }
   }

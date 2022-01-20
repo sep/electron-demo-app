@@ -1,19 +1,39 @@
-<!doctype html>
-<html lang="en-US">
+<!DOCTYPE html>
+<html>
+<!-- <html lang="en-US"> -->
 <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <script>
+      // Called when message received from main process
+      window.api.receive("newResult", (data) => {
+        document.getElementById('result').innerText = data
+      });
+
+      const sum = () => {
+        // Send a message to the main process
+        var firstOperand = document.getElementById('first-operand').innerText
+        var secondOperand = document.getElementById('second-operand').innerText
+        window.api.send("sum", firstOperand, secondOperand);
+      }
+    </script>
 </head>
 <body>
-    <script>
-        // Called when message received from main process
-        window.api.receive("fromMain", (data) => {
-            console.log(`Received '${data}' from main process`);
-        });
-
-        // Send a message to the main process
-        window.api.send("toMain", "some data");
-    </script>
+  <h1>Hello World!</h1>
+  <p>
+      We are using Node.js <span id="node-version"></span>,
+      Chromium <span id="chrome-version"></span>,
+      and Electron <span id="electron-version"></span>.
+  </p>
+  <div>
+      <input type="number" id="first-operand" name="first operand">
+      <input type="number" id="second-operand" name="second operand">
+      <button type="button" id="sum" onclick="sum()">+</button>
+      <button type="button" id="difference">-</button>
+      <button type="button" id="product">x</button>
+      <button type="button" id="division">/</button>
+      <span id="result"></span>
+  </div>
 </body>
 </html>
