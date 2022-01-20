@@ -6,12 +6,13 @@ export interface MathButtonType {
   operation: (a: number, b: number) => number;
   setResult: (a: number) => void;
   label: string;
+  id: string;
 }
 
-export function MathButton({ firstOperand, secondOperand, operation, setResult, label }: MathButtonType) {
+export function MathButton({ firstOperand, secondOperand, operation, setResult, label, id }: MathButtonType) {
   const onClick = () => setResult(operation(firstOperand, secondOperand));
 
   return (
-    <button type="button" onClick={onClick}>{label}</button>
+    <button type="button" onClick={onClick} id={id}>{label}</button>
   );
 }

@@ -15,7 +15,9 @@ describe("Math button", () => {
         secondOperand={2}
         operation={dummyOperation}
         setResult={dummySetResult}
-        label="+" />);
+        id="sum"
+        label="+"
+      />);
     const testInstance = testRenderer.root;
     testInstance.findByType("button").props["onClick"]();
     expect(capturedResult).toEqual(expectedResult);
