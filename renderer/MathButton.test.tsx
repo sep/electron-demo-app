@@ -5,7 +5,7 @@ import TestRenderer from 'react-test-renderer';
 describe("Math button", () => {
   const expectedResult = 3;
   let capturedResult: number;
-  const dummyOperation = (a: number, b: number) => expectedResult;
+  const dummyOperation = () => expectedResult;
   const dummySetResult = (a: number) => { capturedResult = a};
 
   test("sets result of applying operation", () => {
