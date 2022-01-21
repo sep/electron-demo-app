@@ -46,7 +46,7 @@ afterAll ((done) => {
     if (os.platform() === "win32"){
       execSync("taskkill /im chromedriver.exe /f");
     } else {
-      child_process.kill('SIGINT')
+      execSync('pkill chromedriver')
     }
     done();
   })
