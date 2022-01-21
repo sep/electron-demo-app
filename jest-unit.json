@@ -1,0 +1,7 @@
+{
+    "verbose": true,
+    "roots": [
+      "renderer"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[t]sx?$"
+}

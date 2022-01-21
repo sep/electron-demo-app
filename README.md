@@ -26,10 +26,9 @@ $ npm start
 # Other commands
 
 * **compile** - transpile TypeScript into JavaScript
+* **start** - launch the Electron app
 * **lint** - run ESLint
-* **test** - run automated tests
+* **test** - run automated _UNIT_ tests
+* **test-*-*** - run automated _INTEGRATION_ tests with the specified tool and platform
 * **package** - bundle the Electron app to get it ready for distribution
-* **make-all** - make installers for all platforms
-* **make-linux** - make installer for only Linux
-* **make-mac** - make installers for only MacOS
-* **make-windows** - make installers for only Windows
+* **make-*** - make installer for the specified platform(s)

@@ -29,4 +29,6 @@ jobs:
     - run: npm ci
     - run: npm run lint
     - run: npm run build --if-present
-    - run: npm run test-linux
+    - run: npm run test
+    - run: npm run make-linux
+    - run: npm run test-selenium-headless

@@ -1,0 +1,7 @@
+{
+    "verbose": true,
+    "roots": [
+      "integration_tests/selenium"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[t]sx?$"
+}

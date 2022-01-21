@@ -44,7 +44,6 @@ beforeAll ((done) => {
 
 afterAll (async () => {
   await driver.quit();
-  console.log(os.platform())
   if (os.platform() === "win32"){
     execSync("taskkill /im chromedriver.exe /f");
   } else {

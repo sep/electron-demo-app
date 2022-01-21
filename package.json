@@ -7,18 +7,17 @@
     "compile": "tsc && webpack --config webpack.config.js",
     "lint": "eslint . --ext .ts,.tsx",
     "start": "npm run compile && electron-forge start",
-    "test": "npm run test-linux",
-    "test-windows": "npm run make-windows && jest",
-    "test-linux": "npm run make-linux && xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' jest",
-    "test-mac": "npm run make-mac && jest",
+    "test": "jest --config=jest-unit.json",
+    "test-selenium-windows": "jest --config=jest-selenium.json",
+    "test-selenium-headless": "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' jest --config=jest-selenium.json",
     "package": "electron-forge package",
     "make-all": "npm run compile && npm run make-linux-precompiled && npm run make-mac-precompiled && npm run make-windows-precompiled",
     "make-linux-precompiled": "electron-forge make --platform linux",
     "make-mac-precompiled": "electron-forge make --platform darwin",
     "make-windows-precompiled": "electron-forge make --platform win32",
-    "make-linux": "npm run compile && electron-forge make --platform linux",
-    "make-mac": "npm run compile && electron-forge make --platform darwin",
-    "make-windows": "npm run compile && electron-forge make --platform win32"
+    "make-linux": "npm run compile && npm run make-linux-precompiled",
+    "make-mac": "npm run compile && npm run make-mac-precompiled",
+    "make-windows": "npm run compile && npm run make-windows-precompiled"
   },
   "repository": {
     "type": "git",
@@ -30,14 +29,6 @@
     "url": "https://github.com/sep/electron-demo-app/issues"
   },
   "homepage": "https://github.com/sep/electron-demo-app#readme",
-  "jest": {
-    "verbose": true,
-    "roots": [
-      "renderer",
-      "integration_tests"
-    ],
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[t]sx?$"
-  },
   "devDependencies": {
     "@babel/core": "^7.16.10",
     "@babel/preset-env": "^7.16.10",
