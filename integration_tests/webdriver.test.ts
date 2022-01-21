@@ -1,6 +1,8 @@
 import webdriver, { ThenableWebDriver } from 'selenium-webdriver'
 import { ChildProcessWithoutNullStreams, exec, execSync } from "child_process";
 import * as os from "os";
+import 'regenerator-runtime/runtime'
+
 
 let driver : ThenableWebDriver = {} as ThenableWebDriver
 let child_process : ChildProcessWithoutNullStreams = {} as ChildProcessWithoutNullStreams
@@ -40,20 +42,18 @@ beforeAll ((done) => {
     child_process.stdout.on('data', listener);
 })
 
-afterAll ((done) => {
-  driver.quit().then(() => {
-    console.log(os.platform())
-    if (os.platform() === "win32"){
-      execSync("taskkill /im chromedriver.exe /f");
-    } else {
-      execSync('pkill chromedriver')
-    }
-    done();
-  })
+afterAll (async () => {
+  await driver.quit();
+  console.log(os.platform())
+  if (os.platform() === "win32"){
+    execSync("taskkill /im chromedriver.exe /f");
+  } else {
+    execSync('pkill chromedriver')
+  }
 });
 
 
-test('vacuous', (done) => {
+test('vacuous', async () => {
   const firstOperand = driver.findElement(webdriver.By.id('firstOperand'))
   const secondOperand = driver.findElement(webdriver.By.id('secondOperand'))
   const sumButton = driver.findElement(webdriver.By.id('sum'))
@@ -62,10 +62,6 @@ test('vacuous', (done) => {
   firstOperand.sendKeys('100');
   secondOperand.sendKeys('50')
   sumButton.click()
-  driver.wait(() => {
-    return output.getText().then((resultText) => {
-      expect(resultText).toBe("The result is 150")
-      done();
-    })
-  })
+  const text = await output.getText();
+  expect(text).toBe("The result is 150")
 });
