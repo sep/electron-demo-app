@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Tray, Menu } from 'electron'
 import path from 'path'
 
 function createWindow () {
@@ -15,6 +15,7 @@ function createWindow () {
 
 app.whenReady().then(() => {
   createWindow()
+  createTrayIcon()
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -28,3 +29,17 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+function createTrayIcon() {
+  const tray = new Tray('./resources/icon.png')
+  const contextMenu = Menu.buildFromTemplate([
+    { label: 'Item1', type: 'radio' },
+    { label: 'Item2', type: 'radio' },
+    { label: 'Item3', type: 'radio', checked: true },
+    { label: 'Item4', type: 'radio' }
+  ])
+  tray.setToolTip('This is my application.')
+  tray.setContextMenu(contextMenu)
+
+}
+
