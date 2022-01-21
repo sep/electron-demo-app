@@ -23,7 +23,7 @@ beforeAll ((done) => {
       .withCapabilities({
         'goog:chromeOptions': {
           // Here is the path to your Electron binary.
-	  binary: linuxExecutablePath
+          binary: linuxExecutablePath
         }
       })
       .forBrowser('chrome') // note: use .forBrowser('electron') for selenium-webdriver <= 3.6.0
