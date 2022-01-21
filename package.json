@@ -9,7 +9,7 @@
     "start": "npm run compile && electron-forge start",
     "test": "npm run test-linux",
     "test-windows": "npm run make-windows && jest",
-    "test-linux": "npm run make-linux && jest",
+    "test-linux": "npm run make-linux && xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' jest",
     "test-mac": "npm run make-mac && jest",
     "package": "electron-forge package",
     "make-all": "npm run compile && npm run make-linux-precompiled && npm run make-mac-precompiled && npm run make-windows-precompiled",
