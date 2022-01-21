@@ -2,24 +2,10 @@ import webdriver, { ThenableWebDriver } from 'selenium-webdriver'
 import { ChildProcessWithoutNullStreams, exec, execSync } from "child_process";
 import * as os from "os";
 import 'regenerator-runtime/runtime'
-
+import { getExecutablePath } from '../helpers'
 
 let driver : ThenableWebDriver = {} as ThenableWebDriver
 let child_process : ChildProcessWithoutNullStreams = {} as ChildProcessWithoutNullStreams
-
-const windowsExecutablePath = './out/electron-demo-app-win32-x64/electron-demo-app.exe'
-const linuxExecutablePath = './out/electron-demo-app-linux-x64/electron-demo-app'
-const macExecutablePath = 'TBD'
-
-function getExecutablePath(){
-  const platformString = os.platform()
-  switch(platformString){
-    case 'win32': return windowsExecutablePath;
-    case 'linux': return linuxExecutablePath;
-    case 'darwin': return macExecutablePath;
-    default: throw('Unsupported platform: ' + platformString);
-  }
-}
 
 beforeAll ((done) => {
   child_process = exec("npx chromedriver")
