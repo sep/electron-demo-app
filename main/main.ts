@@ -11,11 +11,13 @@ function createWindow () {
   })
 
   win.loadFile('index.html')
+  return win;
 }
-
+let tray: Tray | null = null;
 app.whenReady().then(() => {
-  createWindow()
-  createTrayIcon()
+  const window = createWindow()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  tray = createTrayIcon(window)
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
@@ -30,16 +32,22 @@ app.on('window-all-closed', () => {
   }
 })
 
-function createTrayIcon() {
+function createTrayIcon(window: BrowserWindow) {
   const tray = new Tray('./resources/icon.png')
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'Item1', type: 'radio' },
-    { label: 'Item2', type: 'radio' },
-    { label: 'Item3', type: 'radio', checked: true },
-    { label: 'Item4', type: 'radio' }
+    { label: 'Minimize', type: 'normal', click: () => minimize(window) },
+    { label: 'Maximize', type: 'normal', click: () => maximize(window) },
   ])
   tray.setToolTip('This is my application.')
   tray.setContextMenu(contextMenu)
+  return tray;
+}
 
+function minimize(window: BrowserWindow) {
+  window.hide();
+}
+
+function maximize(window: BrowserWindow) {
+  window.show();
 }
 
