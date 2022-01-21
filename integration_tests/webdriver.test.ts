@@ -9,8 +9,14 @@ const windowsExecutablePath = './out/electron-demo-app-win32-x64/electron-demo-a
 const linuxExecutablePath = './out/electron-demo-app-linux-x64/electron-demo-app'
 const macExecutablePath = 'TBD'
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+function getExecutablePath(){
+  const platformString = os.platform()
+  switch(platformString){
+    case 'win32': return windowsExecutablePath;
+    case 'linux': return linuxExecutablePath;
+    case 'darwin': return macExecutablePath;
+    default: throw('Unsupported platform: ' + platformString);
+  }
 }
 
 beforeAll ((done) => {
@@ -23,7 +29,7 @@ beforeAll ((done) => {
       .withCapabilities({
         'goog:chromeOptions': {
           // Here is the path to your Electron binary.
-          binary: linuxExecutablePath
+          binary: getExecutablePath()
         }
       })
       .forBrowser('chrome') // note: use .forBrowser('electron') for selenium-webdriver <= 3.6.0
