@@ -12,7 +12,7 @@
     "make-all": "npm run make-linux && npm run make-mac && npm run make-windows",
     "make-linux": "electron-forge make --platform linux",
     "make-mac": "electron-forge make --platform darwin",
-    "make-windows": "electron-forge make --platform win32"
+    "make-windows": "npm run compile && electron-forge make --platform win32"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,13 @@
     "url": "https://github.com/sep/electron-demo-app/issues"
   },
   "homepage": "https://github.com/sep/electron-demo-app#readme",
-  "jest" : {
-    "verbose" : true,
-    "roots" : ["renderer", "integration_tests"],
-    "testRegex" : "(/__tests__/.*|(\\.|/)(test|spec))\\.[t]sx?$"
+  "jest": {
+    "verbose": true,
+    "roots": [
+      "renderer",
+      "integration_tests"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[t]sx?$"
   },
   "devDependencies": {
     "@babel/core": "^7.16.10",
@@ -60,6 +63,7 @@
     "@types/selenium-webdriver": "^4.0.16",
     "electron-chromedriver": "^16.0.0",
     "electron-squirrel-startup": "^1.0.0",
+    "npm-run": "^5.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "selenium-webdriver": "^4.1.1"
