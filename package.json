@@ -15,7 +15,7 @@
     "make-all": "npm run compile && npm run make-linux-precompiled && npm run make-mac-precompiled && npm run make-windows-precompiled",
     "make-linux-precompiled": "electron-forge make --platform linux",
     "make-mac-precompiled": "electron-forge make --platform darwin",
-    "make-windows-precompiled": "electron-forge make --platform win32"
+    "make-windows-precompiled": "electron-forge make --platform win32",
     "make-linux": "npm run compile && electron-forge make --platform linux",
     "make-mac": "npm run compile && electron-forge make --platform darwin",
     "make-windows": "npm run compile && electron-forge make --platform win32"
