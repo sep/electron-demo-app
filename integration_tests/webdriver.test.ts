@@ -1,5 +1,6 @@
 import webdriver, { ThenableWebDriver } from 'selenium-webdriver'
-import { ChildProcessWithoutNullStreams, exec } from "child_process";
+import { ChildProcessWithoutNullStreams, exec, execSync } from "child_process";
+import * as os from "os";
 
 let driver : ThenableWebDriver = {} as ThenableWebDriver
 let child_process : ChildProcessWithoutNullStreams = {} as ChildProcessWithoutNullStreams
@@ -10,29 +11,35 @@ function sleep(ms) {
 
 beforeAll ((done) => {
   child_process = exec("npx chromedriver")
-  sleep(2000).then(() => {
-    driver = new webdriver.Builder()
-    // The "9515" is the port opened by chrome driver.
-    .usingServer('http://localhost:9515')
-    .withCapabilities({
-      'goog:chromeOptions': {
-        // Here is the path to your Electron binary.
-        binary: './out/electron-demo-app-win32-x64/electron-demo-app.exe'
-      }
-    })
-    .forBrowser('chrome') // note: use .forBrowser('electron') for selenium-webdriver <= 3.6.0
-    .build()
-    done();
-  })
+  const listener = (data: string) => { 
+    if (data.includes("ChromeDriver was started successfully")){
+      driver = new webdriver.Builder()
+      // The "9515" is the port opened by chrome driver.
+      .usingServer('http://localhost:9515')
+      .withCapabilities({
+        'goog:chromeOptions': {
+          // Here is the path to your Electron binary.
+          binary: './out/electron-demo-app-win32-x64/electron-demo-app.exe'
+        }
+      })
+      .forBrowser('chrome') // note: use .forBrowser('electron') for selenium-webdriver <= 3.6.0
+      .build()
+      child_process.stdout.off('data', listener);
+      done();
+    }};
+    child_process.stdout.on('data', listener);
 })
 
 afterAll ((done) => {
-  driver.quit()
-  child_process.kill('SIGINT')
-  while (child_process.killed) {
-    // do nothing
-  }
-  done();
+  driver.quit().then(() => {
+    console.log(os.platform())
+    if (os.platform() === "win32"){
+      execSync("taskkill /im chromedriver.exe /f");
+    } else {
+      child_process.kill('SIGINT')
+    }
+    done();
+  })
 });
 
 
