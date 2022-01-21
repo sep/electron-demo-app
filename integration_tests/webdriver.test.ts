@@ -5,6 +5,10 @@ import * as os from "os";
 let driver : ThenableWebDriver = {} as ThenableWebDriver
 let child_process : ChildProcessWithoutNullStreams = {} as ChildProcessWithoutNullStreams
 
+const windowsExecutablePath = './out/electron-demo-app-win32-x64/electron-demo-app.exe'
+const linuxExecutablePath = './out/electron-demo-app-linux-x64/electron-demo-app'
+const macExecutablePath = 'TBD'
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -19,7 +23,7 @@ beforeAll ((done) => {
       .withCapabilities({
         'goog:chromeOptions': {
           // Here is the path to your Electron binary.
-          binary: './out/electron-demo-app-win32-x64/electron-demo-app.exe'
+	  binary: linuxExecutablePath
         }
       })
       .forBrowser('chrome') // note: use .forBrowser('electron') for selenium-webdriver <= 3.6.0
