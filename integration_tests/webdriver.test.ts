@@ -53,7 +53,7 @@ afterAll ((done) => {
 });
 
 
-test('vacuous', () => {
+test('vacuous', (done) => {
   const firstOperand = driver.findElement(webdriver.By.id('firstOperand'))
   const secondOperand = driver.findElement(webdriver.By.id('secondOperand'))
   const sumButton = driver.findElement(webdriver.By.id('sum'))
@@ -62,9 +62,10 @@ test('vacuous', () => {
   firstOperand.sendKeys('100');
   secondOperand.sendKeys('50')
   sumButton.click()
-  return driver.wait(() => {
+  driver.wait(() => {
     return output.getText().then((resultText) => {
-      return resultText === "The result is 150"
+      expect(resultText).toBe("The result is 150")
+      done();
     })
   })
 });
