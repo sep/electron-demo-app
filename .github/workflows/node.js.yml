@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main, playwright-headless ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, playwright-headless ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -32,3 +32,4 @@ jobs:
     - run: npm run test
     - run: npm run make-linux
     - run: npm run test-playwright-headless
+    - run: npm run test-selenium-headless
