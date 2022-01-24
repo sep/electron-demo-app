@@ -11,14 +11,11 @@ export class NumericInputComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // @Output() value = new EventEmitter<number>();
   @Input() value = {
     value: 0
   }
 
   setValue(event: any) {
     this.value.value = parseFloat(event.target.value);
-    console.log("Got ", this.value, event)
-    // this.value.emit(temp)
   }
 }
