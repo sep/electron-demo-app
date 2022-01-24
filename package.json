@@ -11,6 +11,7 @@
     "test-selenium-windows": "jest --config=jest-selenium.json",
     "test-selenium-headless": "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' jest --config=jest-selenium.json",
     "test-playwright": "playwright test --config=playwright.config.ts",
+    "test-playwright-headless": "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' playwright test --config=playwright.config.ts",
     "package": "electron-forge package",
     "make-all": "npm run compile && npm run make-linux-precompiled && npm run make-mac-precompiled && npm run make-windows-precompiled",
     "make-linux-precompiled": "electron-forge make --platform linux",
