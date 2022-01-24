@@ -1,16 +1,18 @@
-import { app, BrowserWindow, Tray, Menu } from 'electron'
+import { app, BrowserWindow, Tray, Menu, systemPreferences } from 'electron'
 import path from 'path'
 
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
+    // webPreferences: {
+    //   preload: path.join(__dirname, 'preload.js')
+    // }
   })
 
-  win.loadFile('index.html')
+  console.log(process.cwd())
+  // win.loadFile('index.html')
+  win.loadFile('electron-demo-ng/dist/electron-demo-ng/index.html')
   return win;
 }
 let tray: Tray | null = null;
