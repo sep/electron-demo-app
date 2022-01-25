@@ -15,10 +15,8 @@ test.afterAll(async () => {
   await electronApp.close()
 })
 
-let page: Page
-
 test('page has correct header and title', async () => {
-  page = await electronApp.firstWindow()
+  const page = await electronApp.firstWindow()
   const title = await page.title()
   expect(title).toBe('Hello World!')
   const header = await page.locator("h1").innerText();
@@ -26,10 +24,15 @@ test('page has correct header and title', async () => {
 })
 
 test('should sum operands', async () => {
-  page = await electronApp.firstWindow()
+  const page = await electronApp.firstWindow()
   await page.fill("#firstOperand", "100")
   await page.fill("#secondOperand", "50")
   await page.locator(`button:has-text("+")`).click();
   const actualResult = await page.locator("#result").innerText();
   expect(actualResult).toBe("The result is 150")
+})
+
+test('navigate to angular page and sum operands', async() => {
+  const page = await electronApp.firstWindow()
+  await page.locator(`a`).click()
 })
