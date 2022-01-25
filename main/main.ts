@@ -1,5 +1,4 @@
-import { app, BrowserWindow, Tray, Menu, systemPreferences } from 'electron'
-import path from 'path'
+import { app, BrowserWindow, Tray, Menu } from 'electron'
 
 function createWindow () {
   const win = new BrowserWindow({

@@ -1,4 +1,4 @@
-import { sum, difference, product, division } from '../renderer/operations';
+import { sum, difference, product, division } from './operations';
 
 describe("Math operations", () => {
     test("sum", () => {

@@ -1,7 +1,7 @@
 {
     "verbose": true,
     "roots": [
-      "renderer"
+      "./renderer/react"
     ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[t]sx?$"
 }

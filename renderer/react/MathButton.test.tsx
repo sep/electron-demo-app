@@ -1,5 +1,5 @@
 import React from 'react';
-import { MathButton } from "../renderer/MathButton";
+import { MathButton } from "./MathButton";
 import TestRenderer from 'react-test-renderer';
 
 describe("Math button", () => {

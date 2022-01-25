@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.css']
 })
-export class CalculatorComponent implements OnInit {
+export class CalculatorComponent {
 
   @Input() firstOperand = {value:0}
   @Input() secondOperand = {value:0}
@@ -13,9 +13,6 @@ export class CalculatorComponent implements OnInit {
 
   constructor() { 
     this.displayValue = {value: "Hello world"};
-  }
-
-  ngOnInit(): void {
   }
 
   add2(a:number, b:number): number { 

@@ -1,20 +1,16 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'numeric-input',
   templateUrl: './numeric-input.component.html',
   styleUrls: ['./numeric-input.component.css']
 })
-export class NumericInputComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class NumericInputComponent {
   @Input() value = {
     value: 0
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue(event: any) {
     this.value.value = parseFloat(event.target.value);
   }
