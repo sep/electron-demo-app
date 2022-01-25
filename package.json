@@ -21,7 +21,7 @@
     "make-linux-precompiled": "electron-builder -l",
     "make-mac-precompiled": "electron-builder -m",
     "make-windows-precompiled": "electron-builder-w",
-    "make-linux": "run-s buld make-linux-precompiled",
+    "make-linux": "run-s build make-linux-precompiled",
     "make-mac": "run-s build make-mac-precompiled",
     "make-windows": "run-s build make-windows-precompiled"
   },
