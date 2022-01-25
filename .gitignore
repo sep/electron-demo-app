@@ -2,6 +2,7 @@
 node_modules/
 out/
 dist.ng/
+dist/
 **.js
 !.eslintrc.js
 !webpack.config.js
