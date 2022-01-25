@@ -10,7 +10,6 @@ export class FunctionButtonComponent {
   @Input() firstOperand = {value:0};
   @Input() secondOperand = {value:0};
   @Input() action!: (arg0: number, arg1: number) => number; 
-  @Input() text = "";
   @Output() output = new EventEmitter<number>();
 
   click(): void {

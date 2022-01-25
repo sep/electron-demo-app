@@ -1,4 +1,4 @@
-import { ElectronApplication, Page, _electron as electron } from 'playwright';
+import { ElectronApplication, _electron as electron } from 'playwright';
 import 'regenerator-runtime/runtime'
 import { test, expect } from '@playwright/test'
 import { getExecutablePath } from '../helpers'
@@ -35,4 +35,10 @@ test('should sum operands', async () => {
 test('navigate to angular page and sum operands', async() => {
   const page = await electronApp.firstWindow()
   await page.locator(`a`).click()
+  await page.waitForLoadState()
+  await page.fill("#firstOperand > input", "100", {timeout: 0})
+  await page.fill("#secondOperand> input", "50", {timeout: 0})
+  await page.locator(`button:has-text("+")`).first().click({timeout: 0});
+  const actualResult = await page.locator("label").innerHTML({timeout:0});
+  expect(actualResult).toBe("150")
 })

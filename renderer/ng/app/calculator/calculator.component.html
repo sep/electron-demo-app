@@ -1,12 +1,12 @@
-<numeric-input [value]="firstOperand"></numeric-input>
-<numeric-input [value]="secondOperand"></numeric-input>
+<numeric-input [value]="firstOperand" id="firstOperand"></numeric-input>
+<numeric-input [value]="secondOperand" id="secondOperand"></numeric-input>
 <function-button
-    text="+"
     [firstOperand]="firstOperand"
     [secondOperand]="secondOperand"
     [action]="add2"
     (output)="output($event)"
 >
+    +
 </function-button>
 <button (click)="add()">+</button>
 <button (click)="subtract()">-</button>
