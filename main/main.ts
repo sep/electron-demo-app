@@ -7,8 +7,8 @@ function createWindow () {
   })
 
   console.log(process.cwd())
-  // win.loadFile('index.html')
-  win.loadFile('./dist.ng/index.html')
+  win.loadFile('index.html')
+  // win.loadFile('./dist.ng/index.html')
   return win;
 }
 let tray: Tray | null = null;

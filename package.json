@@ -99,7 +99,11 @@
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "ignore": [
+          "node_modules/@angular"
+        ]
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
