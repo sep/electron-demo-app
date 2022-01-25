@@ -11,8 +11,8 @@ function createWindow () {
   })
 
   console.log(process.cwd())
-  // win.loadFile('index.html')
-  win.loadFile('electron-demo-ng/dist/electron-demo-ng/index.html')
+  win.loadFile('index.html')
+  // win.loadFile('electron-demo-ng/dist/electron-demo-ng/index.html')
   return win;
 }
 let tray: Tray | null = null;
