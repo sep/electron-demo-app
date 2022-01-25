@@ -3,15 +3,12 @@ import { app, BrowserWindow, Tray, Menu } from 'electron'
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
-    height: 600,
-    // webPreferences: {
-    //   preload: path.join(__dirname, 'preload.js')
-    // }
+    height: 600
   })
 
   console.log(process.cwd())
-  win.loadFile('index.html')
-  // win.loadFile('electron-demo-ng/dist/electron-demo-ng/index.html')
+  // win.loadFile('index.html')
+  win.loadFile('./dist.ng/index.html')
   return win;
 }
 let tray: Tray | null = null;
