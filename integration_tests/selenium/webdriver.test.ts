@@ -38,7 +38,7 @@ afterAll (async () => {
 });
 
 
-test('vacuous', async () => {
+test('should sum operands', async () => {
   const firstOperand = driver.findElement(webdriver.By.id('firstOperand'))
   const secondOperand = driver.findElement(webdriver.By.id('secondOperand'))
   const sumButton = driver.findElement(webdriver.By.id('sum'))
