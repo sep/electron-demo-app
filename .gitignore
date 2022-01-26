@@ -1,6 +1,7 @@
 # Dependency directories
 node_modules/
 out/
+dist/
 dist.ng/
 **.js
 !.eslintrc.js
