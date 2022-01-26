@@ -1,7 +1,7 @@
 import * as os from "os";
 
-const windowsExecutablePath = './dist/win-unpacked/electron-demo-app.exe'
-const linuxExecutablePath = './out/linux-packed/electron-demo-app'
+const windowsExecutablePath = './out/electron-demo-app-win32-x64/electron-demo-app.exe'
+const linuxExecutablePath = './out/electron-demo-app-linux-x64/electron-demo-app'
 const macExecutablePath = 'TBD'
 
 export function getExecutablePath(){
