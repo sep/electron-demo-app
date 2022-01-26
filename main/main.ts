@@ -1,15 +1,16 @@
 import { app, BrowserWindow, Tray, Menu } from 'electron'
 
+const headless = ["1", "true"].includes(process.env["HEADLESS"] ?? "")
+
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    show: false
+    show: !headless
   })
 
   console.log(process.cwd())
   win.loadFile('index.html')
-  // win.loadFile('./dist.ng/index.html')
   return win;
 }
 let tray: Tray | null = null;
