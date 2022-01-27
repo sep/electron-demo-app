@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { NumericInputComponent } from './numeric-input/numeric-input.component';
 import { FunctionButtonComponent } from './function-button/function-button.component';
+import { FileViewerComponent } from './file-viewer/file-viewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalculatorComponent,
     NumericInputComponent,
-    FunctionButtonComponent
+    FunctionButtonComponent,
+    FileViewerComponent
   ],
   imports: [
     BrowserModule,

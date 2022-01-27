@@ -7,6 +7,6 @@ render(
   <div>
     <Calculator />
     <FileViewer />
-    </div>,
+  </div>,
   document.getElementById('root')
 );
