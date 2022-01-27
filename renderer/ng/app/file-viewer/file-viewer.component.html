@@ -1,8 +1,8 @@
 <div>
     <div>
-        <button (click)="openFile()">Open file...</button>  
+        <button (click)="openFile()" id="open-file">Open file...</button>  
     </div>
     <div>       
-        <textarea readOnly [value]="Content" style="width: 100%;" ></textarea>
+        <textarea readOnly [value]="Content.Value" style="width: 100%;" id="opened-file"></textarea>
     </div>
 </div>

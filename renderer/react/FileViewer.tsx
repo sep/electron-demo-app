@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import 'regenerator-runtime/runtime'
 
 declare global {
     interface Window {
@@ -29,10 +28,10 @@ export default function FileViewer(){
     return (
         <div>
             <div>
-                <button onClick={openFile}>Open file...</button>  
+                <button onClick={openFile} id="open-file">Open file...</button>  
             </div>
             <div>       
-                <textarea readOnly value={result} style={style} />
+                <textarea readOnly value={result} style={style} id="opened-file" />
             </div>
         </div>
         );

@@ -3,6 +3,7 @@ import { ChildProcessWithoutNullStreams, exec, execSync } from "child_process";
 import * as os from "os";
 import 'regenerator-runtime/runtime'
 import { getExecutablePath } from '../helpers'
+import { Options } from 'selenium-webdriver/chrome';
 
 let driver : ThenableWebDriver = {} as ThenableWebDriver
 let child_process : ChildProcessWithoutNullStreams = {} as ChildProcessWithoutNullStreams
@@ -17,7 +18,7 @@ beforeAll ((done) => {
       .withCapabilities({
         'goog:chromeOptions': {
           // Here is the path to your Electron binary.
-          binary: getExecutablePath()
+          binary: getExecutablePath(),
         }
       })
       .forBrowser('chrome') // note: use .forBrowser('electron') for selenium-webdriver <= 3.6.0

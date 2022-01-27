@@ -1,7 +1,8 @@
 import { app, BrowserWindow, Tray, Menu, ipcMain, dialog } from 'electron'
-import path from 'path'
+import path from "path";
 import fs from "fs";
 const headless = ["1", "true"].includes(process.env["HEADLESS"] ?? "")
+const integrationTest = (process.env["EDA_IT"] ?? "") === "1";
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -10,7 +11,7 @@ function createWindow () {
     show: !headless,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
-    }
+    },
   })
 
   console.log(process.cwd())
@@ -56,8 +57,13 @@ function maximize(window: BrowserWindow) {
 }
 
 ipcMain.handle("openFile", async function(event) : Promise<string | null> {
-  const result = await dialog.showOpenDialog(event.sender as unknown as BrowserWindow)
-  if (result.canceled) return null;
-  const fileContents = fs.readFileSync(result.filePaths[0]);
-  return fileContents.toString();
+  if (integrationTest) {
+    return "Integration Test Ipc Content"
+  }
+  else {
+    const result = await dialog.showOpenDialog(event.sender as unknown as BrowserWindow)
+    if (result.canceled) return null;
+    const fileContents = fs.readFileSync(result.filePaths[0]);
+    return fileContents.toString();
+  }
 });
