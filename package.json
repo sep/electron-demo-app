@@ -6,12 +6,10 @@
   "scripts": {
     "build": "jake",
     "lint": "eslint . --ext .ts,.tsx",
-    "start": "run-s build && electron",
+    "start": "run-s build && electron .",
     "test": "jest --config=jest-unit.json",
     "test-selenium": "cross-env HEADLESS=1 EDA_IT=1 jest --config=jest-selenium.json",
-    "test-selenium-ci": "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' jest --config=jest-selenium.json",
     "test-playwright": "playwright test --config=playwright.config.ts",
-    "test-playwright-ci": "xvfb-run --auto-servernum --server-args='-screen 0, 1600x900x24' playwright test --config=playwright.config.ts",
     "package": "electron-forge package",
     "make-all": "run-s build make:precompiled:*",
     "make:precompiled:linux": "electron-forge make --platform linux",
