@@ -7,3 +7,4 @@ dist.ng/
 !.eslintrc.js
 !webpack.config.js
 .angular
+!jakefile.js
