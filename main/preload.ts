@@ -1,20 +1,27 @@
 import { contextBridge, ipcRenderer } from "electron";
 
-
-
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object
 contextBridge.exposeInMainWorld(
-    "ipc", {
-        async invoke(channel: string): Promise<unknown> {
-            const validChannels = ["openFile"];
-            if (validChannels.includes(channel)) {
-                // Deliberately strip event as it includes `sender` 
-                return ipcRenderer.invoke(channel);
-            } else {
-                console.log("received invalid ipc message", channel)
-            }
-            return Promise.resolve();
+    "api", {
+        async openFile(): Promise<string|null> {
+            return ipcRenderer.invoke("openFile");
         },
+
+        async startChatSession(): Promise<void> {
+            return ipcRenderer.send("startChatSession");
+        },
+
+        async whoAmI(): Promise<string> {
+            return ipcRenderer.invoke("whoAmI");
+        },
+
+        async sendGlobalMessage(user: string, message: string): Promise<void> {
+            return ipcRenderer.send("sendGlobalMessage", user, message);
+        },
+
+        receiveMessage(callback: (user: string, message: string) => void): void {
+            ipcRenderer.on("receiveMessage", (_, user, message) => callback(user, message))
+        }
     }
 );

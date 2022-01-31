@@ -4,22 +4,27 @@ const { exec, execSync } = require( "child_process")
 const jake = require("jake")
 
 task('default', ['renderer', 'main'])
-task('renderer', ['renderer-react', 'renderer-ng'])
+task('renderer', ['renderer-react', 'renderer-chat', 'renderer-ng'])
 task('main', fromx(".ts", ".js", './main/*.ts'))
 
 task('renderer-react', ['site.js'])
+task('renderer-chat', ['chat.js'])
 task('renderer-ng', ['dist.ng'])
 
 jake.rule('.js', '.ts', () => {
-    execSync("tsc")
+    execSync("tsc", {stdio: 'inherit'})
 })
 
-jake.file('site.js', from("./renderer/react/**/*.*"), () => {
-    execSync("npx webpack --config webpack.config.js")
+jake.file('site.js', from("./renderer/react/**/*.*", "./renderer/common"), () => {
+    execSync("npx webpack --config webpack.react.config.js", {stdio: 'inherit'})
 })
 
-jake.file('dist.ng', from("./renderer/ng/**/*.*"), () => {
-    execSync("npx ng build")
+jake.file('chat.js', from("./renderer/chat/**/*.*", "./renderer/common"), () => {
+    execSync("npx webpack --config webpack.chat.config.js", {stdio: 'inherit'})
+})
+
+jake.file('dist.ng', from("./renderer/ng/**/*.*", "./renderer/common"), () => {
+    execSync("npx ng build", {stdio: 'inherit'})
 })
 
 function from(...args) {

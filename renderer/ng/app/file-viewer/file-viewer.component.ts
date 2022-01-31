@@ -1,12 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-declare global {
-  interface Window {
-      ipc: {
-          invoke(channel: string): Promise<unknown>
-      }
-  }
-}
+import "../../../common/windowExtensions";
 
 @Component({
   selector: 'file-viewer',
@@ -19,7 +12,7 @@ export class FileViewerComponent {
   @Input() Content = {Value: ""};
   
   async openFile() {
-    const data = await window.ipc.invoke("openFile") as string|null;
+    const data = await window.api.openFile();
     if (data === null){
         console.log("Browsing canceled by user.")
         return;

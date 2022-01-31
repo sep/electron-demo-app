@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-
-declare global {
-    interface Window {
-        ipc: {
-            invoke(channel: string): Promise<unknown>
-        }
-    }
-}
+import "../common/windowExtensions";
 
 export default function FileViewer(){
     const [result, setResult] = useState("");
     const openFile = async () =>
     {
-        const data = await window.ipc.invoke("openFile") as string|null;
+        const data = await window.api.openFile();
         if (data === null){
             console.log("Browsing canceled by user.")
             return;
