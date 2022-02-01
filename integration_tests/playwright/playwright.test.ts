@@ -14,7 +14,10 @@ test.describe("Electron Demo App Integration Tests", () => {
         ...process.env,
         HEADLESS: "1",
         EDA_IT: "1"
-      }
+      },
+      args: [
+        "app=react-calculator"
+      ]
     })
     page = await electronApp.firstWindow()
   })

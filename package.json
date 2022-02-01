@@ -6,7 +6,10 @@
   "scripts": {
     "build": "jake",
     "lint": "eslint . --ext .ts,.tsx",
-    "start": "run-s build && electron .",
+    "start": "echo Choose one: start:react-calculator, start:chat, start:ng-calculator",
+    "start:react-calculator": "run-s build && electron . app=react-calculator",
+    "start:chat": "run-s build && electron . app=chat",
+    "start:ng-calculator": "run-s build && electron . app=ng-calculator",
     "test": "jest --config=jest-unit.json",
     "test-selenium": "cross-env HEADLESS=1 EDA_IT=1 jest --config=jest-selenium.json",
     "test-playwright": "playwright test --config=playwright.config.ts",

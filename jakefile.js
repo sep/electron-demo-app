@@ -27,7 +27,7 @@ jake.file('background-chatter.js', from("./renderer/background-chatter/**/*.*", 
     execSync("npx webpack --config webpack.background-chatter.config.js", {stdio: 'inherit'})
 })
 
-jake.file('dist.ng', from("./renderer/ng/**/*.*", "./renderer/common"), () => {
+jake.file('dist.ng', from("./renderer/ng/**/*.*", "./renderer/common", "angular.json"), () => {
     execSync("npx ng build", {stdio: 'inherit'})
 })
 
