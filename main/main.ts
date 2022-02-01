@@ -84,6 +84,7 @@ ipcMain.on("startChatSession", async function() {
   createChatWindow("jake");
   createChatWindow("rob");
   createChatWindow("jordan");
+  createBackgroundChatter("bg-chatter");
   
   calculatorWindow?.close()
   calculatorWindow = null;
@@ -106,7 +107,27 @@ function createChatWindow (user: string) {
 
   chatWindows.push({Window: win, Name: user})
 
+  win.on("closed", () => {
+    if (BrowserWindow.getAllWindows().every(w => !w.isVisible())) app.quit();
+  })
+
   win.loadFile('./renderer/chat/index.html')
+  return win;
+}
+
+function createBackgroundChatter (user: string): BrowserWindow {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    show: false,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+    },
+  })
+
+  chatWindows.push({Window: win, Name: user})
+
+  win.loadFile('./renderer/background-chatter/index.html')
   return win;
 }
 
