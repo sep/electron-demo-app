@@ -1,6 +1,6 @@
 import calculatorApp from "./calculatorApp";
 import chatApp from "./chatApp";
-console.log(__dirname)
+
 const appArg = process.argv.find(arg => arg.startsWith("app="));
 const app = appArg?.substring("app=".length)
 
@@ -15,6 +15,6 @@ switch (app) {
         calculatorApp("ng")
         break;
     default:
-        chatApp();
+        calculatorApp("react");
         break;
 }
